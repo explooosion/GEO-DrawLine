@@ -1,0 +1,7 @@
+.wrapper {
+    margin: 2rem 4rem;
+}
+
+agm-map {
+    height: 500px;
+}

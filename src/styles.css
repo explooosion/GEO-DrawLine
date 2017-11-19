@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    font-family: 'Microsoft JhengHei', sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    line-height: 1.428571429;
+    font-size: 14px;
+    color: #333;
+}
