@@ -19,3 +19,6 @@ npm start
 5. color picker can change the line-color
 6. click Info to see data window
 7. click Export to see JSON data
+
+## Demo
+![GEO-DrawLine](https://i.imgur.com/uPuLDLv.jpg "GEO-DrawLine")
