@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AgmCoreModule } from '@agm/core';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: '',
       language: 'zh-TW'
-    })
+    }),
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

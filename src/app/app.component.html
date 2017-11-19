@@ -1,8 +1,78 @@
-<div class="wrapper">
-  <h1>GEO-DrawLine</h1>
-  <h4>繪製 Gmap 線路圖並轉出</h4>
+<div class="container mt-4">
+  <h1>GEO DrawLines
+    <small class="h4">gmap polyline maker</small>
+    <small *ngIf="isDraw" class="h4 text-danger">（Drawing）</small>
+  </h1>
+
   <hr>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="17">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
+
+  <!-- Map Controller -->
+  <div class="row form-group map-control">
+    <div class="col-md-5">
+      <button type="button" class="btn btn-primary" (click)="drawMode($event);">
+        <i class="fa fa-pencil" aria-hidden="true"></i>Draw</button>
+      <button type="button" class="btn btn-info" (click)="rollBack()">
+        <i class="fa fa-reply" aria-hidden="true"></i>Revert</button>
+      <button type="button" class="btn btn-success" (click)="viewMode($event);">
+        <i class="fa fa-check" aria-hidden="true"></i>Finish</button>
+      <button type="button" class="btn btn-secondary" (click)="cleanMode()">
+        <i class="fa fa-times" aria-hidden="true"></i>Clean</button>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" [(colorPicker)]="color" [style.background]="color" style.color="#fff" [value]="color" />
+    </div>
+    <div class="col-md-3 offset-md-2">
+      <button type="button" class="btn btn-dark" (click)="infoMode()">
+        <i class="fa" [ngClass]="{ 'fa-eye' : isShowInfo, 'fa-eye-slash' : !isShowInfo }" aria-hidden="true"></i>Info</button>
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#dataModal">
+        <i class="fa fa-print" aria-hidden="true"></i>Export</button>
+    </div>
+  </div>
+
+  <hr>
+
+</div>
+
+<!-- Map Block -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="17" (mapClick)="addPolyline($event)">
+        <agm-polyline [strokeColor]="color">
+          <agm-polyline-point *ngFor="let p of paths" [latitude]="p.lat" [longitude]="p.lng"></agm-polyline-point>
+        </agm-polyline>
+      </agm-map>
+    </div>
+  </div>
+</div>
+
+<!-- Info List -->
+<div #list class="list" *ngIf="paths.length > 0 && isShowInfo">
+  <ul>
+    <li *ngFor="let p of paths">
+      <p>Lat: {{ p.lat }}</p>
+      <p>Lng: {{ p.lng }}</p>
+    </li>
+  </ul>
+</div>
+
+
+<!-- JSON - Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dataModalLabel">JSON Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea cols="60" rows="10" [value]="pathsJSON"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -11,3 +11,14 @@ body {
     font-size: 14px;
     color: #333;
 }
+
+button,
+input[type='button'] {
+    cursor: pointer;
+    width: 100px;
+    margin: 0 0.2rem;
+}
+
+i {
+    margin-right: 0.3rem;
+}

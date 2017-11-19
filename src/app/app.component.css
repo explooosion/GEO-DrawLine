@@ -1,7 +1,30 @@
-.wrapper {
-    margin: 2rem 4rem;
+agm-map {
+    height: calc(100vh - 190px);
 }
 
-agm-map {
-    height: 500px;
+.map-control input {
+    width: 100px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.list {
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0.6rem;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .6);
+    color: #fff;
+}
+
+.list ul {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.list ul li:last-child {
+    color: yellow;
 }
