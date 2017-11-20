@@ -17,7 +17,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
     FormsModule,
     HttpModule,
     JsonpModule,
-    ColorPickerModule,
     AgmCoreModule.forRoot({
       apiKey: '',
       language: 'zh-TW'
