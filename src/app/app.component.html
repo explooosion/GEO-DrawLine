@@ -68,7 +68,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <textarea cols="60" rows="10" [value]="pathsJSON"></textarea>
+        <textarea cols="60" rows="10" [(ngModel)]="pathsJSON" (ngModelChange)="importMode($event)"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

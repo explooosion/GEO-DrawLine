@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   public isDraw: Boolean = false;     // 是否監聽地圖繪製
   public isShowInfo: Boolean = true;  // 是否顯示資訊
   public paths: any = [];             // 路徑資料
-  public pathsJSON: any = [];         // 路徑資料-轉JSON
+  public pathsJSON: any;         // 路徑資料-轉JSON
   public color: string = '#f00';      // 調色盤
 
   constructor(
@@ -75,5 +75,15 @@ export class AppComponent implements OnInit {
   public cleanMode() {
     this.paths = [];
     this.isDraw = false;
+  }
+
+  /**
+   * 模式 - 匯入資料
+   */
+  public importMode(e) {
+    // console.log(e)
+    if (this.pathsJSON) {
+      this.paths = JSON.parse(this.pathsJSON);
+    }
   }
 }
